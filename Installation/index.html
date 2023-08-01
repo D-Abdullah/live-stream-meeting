@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>JupiterMeet Pro Installation</title>
+    <meta charset="utf-8">
+    <meta name="author" content="RTC Labs">
+    <script defer src="js/all.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link id="theme-style" rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="favicon.ico" />
+</head>
+
+<body class="body-green">
+    <div class="page-wrapper">
+        <header id="header" class="header">
+            <div class="container">
+                <div class="branding">
+                    <h1 class="logo">
+                        <a href="" class="logo-section">
+                           <img src="images/logo.png" class="logo" alt="JupiterMeet Pro" width="250px" height="50px" />
+                        </a>
+                    </h1>
+                </div>
+            </div>
+        </header>
+        <div class="doc-wrapper">
+            <div class="container">
+                <div id="doc-header" class="doc-header text-center">
+                    <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Installation</h1>
+                    <div class="meta"><i class="far fa-clock"></i> Last updated: November 3rd, 2022</div>
+                </div>
+                <div class="doc-body row">
+                    <div class="doc-content col-md-9 col-12 order-1">
+                        <div class="content-inner">
+                            <section id="introduction" class="doc-section">
+                                <h2 class="section-title">Introduction</h2>
+                                <div class="section-block">
+                                    <p>The installation of JupiterMeet Pro is very easy and straightforward. This guide will help you run the bash script which will install and configure all the dependencies required to run the project properly on a clean Ubuntu 18.04 or CentOS 7 server. A basic knowledge of terminal is required.</p>
+
+                                    <p>Please follow all the steps very carefully. Once you have the dependencies installed, you can use the web installer to install the application from the browser itself.</p>
+                                </div>
+                            </section>
+
+                            <section id="vps" class="doc-section">
+                                <h2 class="section-title">VPS</h2>
+                                <div class="section-block">
+                                    <p>Ubuntu 18.04 or CentOS 7 with minimum of 12 GB RAM is a recommended VPS.</p>
+                                    <p>Check out this link to get a <a href="https://vpsdime.com/a/2076/vd12gb7" target="_blank">cheap VPS hosting.</a></p>
+                                </div>
+                            </section>
+
+                            <section id="auto" class="doc-section">
+                                <h2 class="section-title">Automatic installation</h2>
+                                <div class="section-block">
+                                    <p>Make sure the server is empty, otherwise it may create issues. Click <a href="manual.html">here</a> if you prefer the manual way.</p>
+
+                                    <ol>
+                                        <li>
+                                            Upload the bash script (jupitermeet-installation.sh) and the application (jupitermeet.zip) to your server
+                                            <p>Note: Place the zip and the script in same directory</p>
+                                        </li>
+                                        <li>
+                                            Set execute permission on script
+                                            <p><code>chmod 700 jupitermeetpro-installation.sh</code></p>
+                                        </li>
+                                        <li>
+                                            Execute the script
+                                            <p><code>./jupitermeetpro-installation.sh</code></p>
+                                        </li>
+                                    </ol>
+
+                                    <p>Once the installation is finished, note down all the details it returns.</p>
+                                </div>
+                            </section>
+                            
+                            <section id="installation" class="doc-section">
+                                <h2 class="section-title">Application setup</h2>
+                                <div class="section-block">
+                                    <ul>
+                                        <li>
+                                            Open <b>yourdomain.in/install</b> in the browser
+                                            <img src="images/installer.png" width="800px">
+                                        </li>
+                                        <li>
+                                            <b>.env section</b>: Follow all the steps very carefully and udpate the values as below
+                                            <ul>
+                                                <span>Application</span>
+                                                <li><b>APP_ENV</b>: <i>local</i> or <i>live</i>. Based upon where you want to setup</li>
+                                                <li><b>APP_KEY</b>: No need to change</li>
+                                                <li><b>APP_DEBUG</b>: <i>true</i> or <i>false</i>. Generally, true in local server and false on live</li>
+                                                <li><b>APP_LOG_LEVEL</b>: No need to change</li>
+                                                <li><b>APP_URL</b>: Your application URL</li>
+
+                                                <span>Database</span>
+                                                <li><b>DB_CONNECTION</b>: No need to change</li>
+                                                <li><b>DB_HOST</b>: No need to change</li>
+                                                <li><b>DB_PORT</b>: No need to change</li>
+                                                <li><b>DB_DATABASE</b>: Database name that you created in the above step</li>
+                                                <li><b>DB_USERNAME</b>: Database username</li>
+                                                <li><b>DB_PASSWORD</b>: Database password</li>
+
+                                                <span>Email</span>
+                                                <li><b>MAIL_DRIVER</b>: Email driver</li>
+                                                <li><b>MAIL_HOST</b>: Email host</li>
+                                                <li><b>MAIL_PORT</b>: Email port</li>
+                                                <li><b>MAIL_USERNAME</b>: Email username</li>
+                                                <li><b>MAIL_PASSWORD</b>: Email password</li>
+                                                <li><b>MAIL_ENCRYPTION</b>: Email encryption</li>
+                                                <li><b>MAIL_FROM_NAME</b>: Your application name</li>
+                                                <li><b>MAIL_FROM_ADDRESS</b>: Your email address</li>
+                                            </ul>
+                                        </li>
+                                        <li>Please add qoutes if env variables have space in it</li>
+                                        <li>Click save and Install (Make sure you click 'Save .env' before clicking on Install)</li>
+                                    </ul>
+                                    <h3>Turn on 'less secure apps' from your Google account to allow the application to send emails</h3>
+                                    <ol>
+                                        <li>
+                                            Go to your (<a href="https://myaccount.google.com/" target="_blank">Google Account</a>).
+                                        </li>
+                                        <li>
+                                            On the left navigation panel, click <b>Security</b>.
+                                        </li>
+                                        <li>
+                                            On the bottom of the page, in the <i>Less secure app access panel</i>, click <b>Turn on access</b>.<br>
+                                        </li>
+                                        <li>
+                                            Click the <b>Save</b> button.
+                                        </li>
+                                    </ol>
+                                    <h3>Note: The application will send emails in the following cases,</h3>
+                                    <li>Reset password</li>
+                                    <li>Meeting invitation</li>
+                                </div>
+                            </section>
+
+                            <section id="signaling" class="doc-section">
+                                <h2 class="section-title">Signaling</h2>
+                                <div class="section-block">
+                                    <p>Navigate to the /server directory from terminal.</p>
+                                    <p><code>cd /var/www/html/jupitermeet_pro/server</code></p>
+                                    <p>Update .env file to match your requirements</p>
+                                    <img src="images/env.png">
+                                    <ul>
+                                        <li><b>KEY_PATH</b>: Path to your SSL key</li>
+                                        <li><b>CERT_PATH</b>: Path to your SSL certificate</li>
+                                        <li><b>DOMAIN</b>: Your domain with https</li>
+                                        <li><b>PORT</b>: Port to run NodeJS on</li>
+                                        <li><b>MAX_FILESIZE</b>: In MB</li>
+                                        <li><b>USER_LIMIT_PER_MEETING</b>: Users allowed per meeting</li>
+                                        <li><b>IP</b>: Server's IP address</li>
+                                        <li><b>ANNOUNCED_IP</b>: Useful when running application behind NAT with private IP</li>
+                                        <li><b>RTC_MIN_PORT</b>: Minimun RTC port</li>
+                                        <li><b>RTC_MAX_PORT</b>: Maximum RTC port</li>
+                                    </ul>
+
+                                    <p>Run on live</p>
+                                    <p><code>npm run live</code></p>
+
+                                    <p>Run on local server</p>
+                                    <p><code>npm run local</code></p>
+
+                                    <p>Save the processes</p>
+                                    <p><code>pm2 save</code></p>
+                                </div>
+                            </section>
+
+                            <section id="configuration" class="doc-section">
+                                <h2 class="section-title">Configuration</h2>
+                                <div class="section-block">
+                                    <div class="section-block">
+                                        <h3>Storage link (optional)</h3>
+                                        <p>If you see a broken logo, that means the storage link has not been created, use this command (from root project directory)</p>
+
+                                        <p><code>php artisan storage:link</code></p>
+
+                                        <h3>Global Configuration</h3>
+                                        <ul>
+                                            <li>Login and navigate to the <b>Admin > Global Configuration</b> module</li>
+                                            <li>Here you can update application name, logo, theme color etc</li>
+                                            <li>Update the Signaling URL with your domain and port</li>
+                                            <img src="images/configure.png" width="600px">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="payment_config" class="doc-section">
+                                <h2 class="section-title">Payment Configuration</h2>
+                                <div class="section-block">
+                                    <div class="section-block">
+                                        <ul>
+                                            <li>Enable payment mode from Admin > Global Configuration</li>
+                                            <li>Extended License is required to enable the payment mode. <a href="https://help.market.envato.com/hc/en-us/articles/115005593503-If-I-choose-the-wrong-license-or-need-to-upgrade-my-license-how-easy-is-it-to-change-to-the-correct-license-" target="_blank">Updrade to the Extended License</a></li>
+                                            <li>Login and navigate to the <b>Admin > Manage Payment > Payment Gateways</b>   </li>
+                                            <li>Here you can enable payments and set payment credentials</li>
+                                        </ul>
+
+                                        <h3>Stripe</h3>
+                                        <ul>
+                                            <li> Login into your <a href="https://dashboard.stripe.com/" target="_blank">Stripe account</a> </li>
+                                            <li>Go to the Developers section of the Stripe dashboard and click on <a href="https://dashboard.stripe.com/account/apikeys" target="_blank">API Keys</a></li>
+                                            <img src="images/stripe_cred.png" width="800px">
+                                            <li>Copy the Publishable key and Secret key in <b>Admin > Manage Payment > Payment Gateways > Stripe</b></li>
+                                            <li>From the sidebar, go to the Developers section of the Stripe dashboard and click on <a href="https://dashboard.stripe.com/test/webhooks" target="_blank">Webhooks.</a> and Click on <b>Add a new endpoint</b></li>
+                                            <img src="images/stripe_webhook.png" width="800px">
+                                            <li>On the <code>Endpoint URL</code> field paste your webhook URL, this can be found on <b> Admin > Manage Payment > Payment Gateways > Stripe.</b></li>
+                                            <li>On the Events to send field, click on receive all events, and click the <b>Add endpoint</b> button.</li>
+                                            <li>Copy the <code>Signing secret</code> in <b>Admin > Manage Payment > Payment Gateways > Stripe.</b></li>
+                                            <img src="images/stripe_wh_key.png" width="800px">
+                                        </ul>
+
+                                        <h3>PayPal</h3>
+                                        <ul>
+                                            <li> Login into your <a href="https://developer.paypal.com/developer/applications" target="_blank">Paypal account</a> </li>
+                                            <li>Go to the <a href="https://developer.paypal.com/developer/applications" target="_blank">My apps & credentials </a> section, click on Live button and then on the Create app button.</li>
+                                            <img src="images/pp_create_app.png" width="800px">
+                                            <li>Copy the <code>Client ID</code> and <code>Secret</code> in <b>Admin > Manage Payment > Payment Gateways > PayPal. </b></li>
+                                            <img src="images/pp_cred.png" width="800px">
+                                            <li>Go to the <a href="https://developer.paypal.com/developer/applications" target="_blank">My apps & credentials</a> section, click on Live button and then select your app.</li>
+                                            <li>Scroll down to LIVE WEBHOOKS and click on the Add webhook button.</li>
+                                            <img src="images/pp_add_wh.png" width="800px">
+                                            <li>On the <code>Webhook URL</code> field paste your webhook URL. This can be found on <b>Admin > Manage Payment > Payment Gateways > PayPal. </b></li>
+                                            <li>Under the Events types select All events and save your changes.</li>
+                                            <li>Copy the Webhook ID in <b>Admin > Manage Payment > Payment Gateways > PayPal. </b></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="localization" class="doc-section">
+                                <h2 class="section-title">Localization</h2>
+                                <div class="section-block">
+                                    <div class="section-block">
+                                        <p>To add a new language, Download the Sample English File from the Languages section in the Admin panel. After editing to your language, click on the Create button and add that edited file.</p>
+
+                                        <p>When an update is made and more texts are added to the English file, download the sample as well as your language file, translate the difference and save it.</p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="firewall" class="doc-section">
+                                <h2 class="section-title">Configure Firewall (optional)</h2>
+                                <div class="section-block">
+                                    <div class="section-block">
+                                        <p>If Firewall is active, please open the below ports for signaling server.</p>
+
+                                        <ul class="list">
+                                            <li>443 TCP</li>
+                                            <li>9007 TCP</li>
+                                            <li>From RTC_MIN_PORT to RTC_MAX_PORT UDP</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="manage" class="doc-section">
+                                <h2 class="section-title">Manage Processes</h2>
+                                <div class="section-block">
+                                    <div class="section-block">
+                                        <p>Manage processes with PM2</p>
+                                        <h3>Manage NodeJS</h3>
+                                        <p>View running processes</p>
+                                        <p><code>pm2 list</code></p>
+
+                                        <p>Restart NodeJS server</p>
+                                        <p><code>pm2 restart JupiterMeetPro</code></p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="renew" class="doc-section">
+                                <h2 class="section-title">Renew SSL</h2>
+                                <div class="section-block">
+                                    <div class="section-block">
+                                        <p>Let's Encryt will renew certificates automatically but if you need to do it manually, use the below command.</p>
+                                        <p><code>certbot renew</code></p>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="troubleshooting" class="doc-section">
+                                <h2 class="section-title">Troubleshooting</h2>
+                                <div class="section-block">
+                                    <div class="section-block">
+                                        <p></p>
+
+                                        <ul class="list">
+                                            <li>Make sure NodeJS server is up and running</li>
+                                            <li>Make sure frontend is pointing to the NodeJS server with your signaling port (9007)</li>
+                                            <li>If firewall is active, make sure the ports are allowed</li>
+                                            <li>If the application is running behind NAT with private IP, add ANNOUNCED_IP in /server/.env</li>
+                                            <li>Make sure the app is running on https</li>
+                                            <li>Make sure the SSL certificates are valid</li>
+                                            <li>Make sure no antivirus softwares are blocking the media device access</li>
+                                            <li>To reflect the changes, please clear browser cache or hard reload the page</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section id="webhooks" class="doc-section">
+                                <h2 class="section-title">Webhooks</h2>
+                                <div class="section-block">
+                                    <div class="section-block">
+                                        <h3>Create Meeting</h3>
+                                        <code>https://yourdomain.in/webhooks/meeting</code>
+
+                                        <p></p>
+                                        <p><b>Query Params:</b> api_token, title, description, password, date, time, timezone</p>
+                                        <p><b>Method:</b> post</p>
+                                        <p><b>Returns:</b> meeting details</p>
+                                        <p><b>Note:</b> api_token can be taken from the user profile</p>
+
+                                        <h3>Create User</h3>
+                                        <code>https://yourdomain.in/webhooks/user</code>
+
+                                        <p></p>
+                                        <p><b>Query Params:</b> api_token, username, email, password</p>
+                                        <p><b>Method:</b> post</p>
+                                        <p><b>Returns:</b> user details</p>
+                                        <p><b>Note:</b> api_token can be taken from the admin panel</p>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                    <div class="doc-sidebar col-md-3 col-12 order-0 d-none d-md-flex">
+                        <div id="doc-nav" class="doc-nav">
+                            <nav id="doc-menu" class="nav doc-menu flex-column sticky">
+                                <a class="nav-link scrollto" href="#introduction">Introduction</a>
+                                <a class="nav-link scrollto" href="#vps">VPS</a>
+                                <a class="nav-link scrollto" href="#auto">Automatic Installation</a>
+                                <a class="nav-link scrollto" href="#installation">Application Setup</a>
+                                <a class="nav-link scrollto" href="#signaling">Signaling</a>
+                                <a class="nav-link scrollto" href="#configuration">Configuration</a>
+                                <a class="nav-link scrollto" href="#payment_config">Payment Configuration</a>
+                                <a class="nav-link scrollto" href="#localization">Localization</a>
+                                <a class="nav-link scrollto" href="#firewall">Configure Firewall</a>
+                                <a class="nav-link scrollto" href="#manage">Manage Processes</a>
+                                <a class="nav-link scrollto" href="#renew">Renew SSL</a>
+                                <a class="nav-link scrollto" href="#troubleshooting">Troubleshooting</a>
+                                <a class="nav-link scrollto" href="#webhooks">Webhooks</a>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="footer" class="footer text-center">
+        <div class="container">
+            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a
+                    href="https://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.scrollTo.min.js"></script>
+    <script type="text/javascript" src="js/stickyfill.min.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>
